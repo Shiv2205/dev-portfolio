@@ -1,54 +1,47 @@
 @page "/projects"
+@using blzrTest.Components.Data
+@inject ProjectService projectService
 
 <PageTitle>My Projects</PageTitle>
 
 <MudContainer>
     <MudText Typo="Typo.h3" GutterBottom="true">My Projects</MudText>
     <MudGrid Spacing="4">
-        <MudItem xs="12" sm="6" md="4">
-            <MudCard>
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.h5">Project 1</MudText>
-                    </CardHeaderContent>
-                </MudCardHeader>
-                <MudCardContent>
-                    <MudText Typo="Typo.body2">A brief description of the first project.</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudCard>
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.h5">Project 2</MudText>
-                    </CardHeaderContent>
-                </MudCardHeader>
-                <MudCardContent>
-                    <MudText Typo="Typo.body2">A brief description of the second project.</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudCard>
-                <MudCardHeader>
-                    <CardHeaderContent>
-                        <MudText Typo="Typo.h5">Project 3</MudText>
-                    </CardHeaderContent>
-                </MudCardHeader>
-                <MudCardContent>
-                    <MudText Typo="Typo.body2">A brief description of the third project.</MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-                </MudCardActions>
-            </MudCard>
-        </MudItem>
+        @foreach (var project in projects)
+        {
+            <MudItem xs="12" sm="6" md="4">
+                <MudCard>
+                    <MudCardMedia Image="@project.ImageUrl" Height="200" />
+                    <MudCardHeader>
+                        <MudText Typo="Typo.h5">@project.Title</MudText>
+                    </MudCardHeader>
+                    <MudCardContent>
+                        <MudText Typo="Typo.body2">@project.Description</MudText>
+                        <div class="mt-2">
+                            @if (project.Technologies != null)
+                            {
+                                @foreach (var tech in project.Technologies)
+                                {
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">@tech</MudChip>
+                                }
+                            }
+                        </div>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary" Href="@project.RepoUrl" Target="_blank">Source Code</MudButton>
+                        <MudButton Variant="Variant.Text" Color="Color.Secondary" Href="@project.LiveUrl" Target="_blank">Live Demo</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        }
     </MudGrid>
 </MudContainer>
+
+@code {
+    private List<Project> projects = new List<Project>();
+
+    protected override void OnInitialized()
+    {
+        projects = projectService.GetProjects();
+    }
+}
