@@ -2,7 +2,8 @@ namespace dev_portfolio.Components.Data
 {
     public class Project
     {
-        public string? Title { get; set; }
+        public Guid Id { get; set; }
+        public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
         public List<string>? Technologies { get; set; }
         public string? ImageUrl { get; set; }
