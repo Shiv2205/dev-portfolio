@@ -1,7 +1,7 @@
 using MudBlazor;
 using MudBlazor.Utilities;
 
-namespace blzrTest.Components
+namespace dev_portfolio.Components
 {
     public class CustomTheme : MudTheme
     {

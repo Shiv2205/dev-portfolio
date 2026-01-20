@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blzrTest", "blzrTest.csproj", "{E41D40CC-31B0-C158-5212-44E35F1F49F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dev_portfolio", "dev_portfolio.csproj", "{E41D40CC-31B0-C158-5212-44E35F1F49F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

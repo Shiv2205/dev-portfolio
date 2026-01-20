@@ -1,5 +1,5 @@
-using blzrTest.Components;
-using blzrTest.Components.Data;
+using dev_portfolio.Components;
+using dev_portfolio.Components.Data;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);

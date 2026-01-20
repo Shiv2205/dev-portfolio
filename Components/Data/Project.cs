@@ -1,4 +1,4 @@
-namespace blzrTest.Components.Data
+namespace dev_portfolio.Components.Data
 {
     public class Project
     {
