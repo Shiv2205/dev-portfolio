@@ -1,13 +1,15 @@
 ﻿@inherits LayoutComponentBase
+@using blzrTest.Components.Data
+@inject DeveloperProfile developerProfile
 
-<MudThemeProvider @bind-IsDarkMode="_isDarkMode" />
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="_myTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">My Portfolio</MudText>
+        <MudText Typo="Typo.h5" Class="ml-3">@developerProfile.Name</MudText>
         <MudSpacer />
         <MudIconButton Icon="@(_isDarkMode ? Icons.Material.Filled.WbSunny : Icons.Material.Filled.Brightness4)" Color="Color.Inherit" OnClick="@ToggleDarkMode" />
     </MudAppBar>
@@ -32,6 +34,7 @@
 @code {
     private bool _drawerOpen = false;
     private bool _isDarkMode = true;
+    private CustomTheme _myTheme = new CustomTheme();
 
     private void DrawerToggle()
     {
