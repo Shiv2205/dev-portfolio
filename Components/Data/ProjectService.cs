@@ -4,13 +4,13 @@ namespace dev_portfolio.Components.Data
     {
         public List<Project> GetProjects()
         {
-            return new List<Project>
-            {
+            return
+            [
                 new Project
                 {
                     Title = "Project One",
                     Description = "A web application for tracking personal fitness goals.",
-                    Technologies = new List<string> { "Blazor", "C#", ".NET", "SQL Server" },
+                    Technologies = ["Blazor", "C#", ".NET", "SQL Server"],
                     ImageUrl = "https://via.placeholder.com/300x200",
                     RepoUrl = "https://github.com/johndoe/project-one",
                     LiveUrl = "https://project-one.johndoe.com"
@@ -19,7 +19,7 @@ namespace dev_portfolio.Components.Data
                 {
                     Title = "Project Two",
                     Description = "A mobile app for managing recipes and grocery lists.",
-                    Technologies = new List<string> { "MAUI", "C#", ".NET", "SQLite" },
+                    Technologies = ["MAUI", "C#", ".NET", "SQLite"],
                     ImageUrl = "https://via.placeholder.com/300x200",
                     RepoUrl = "https://github.com/johndoe/project-two",
                     LiveUrl = "https://project-two.johndoe.com"
@@ -28,12 +28,12 @@ namespace dev_portfolio.Components.Data
                 {
                     Title = "Project Three",
                     Description = "An e-commerce website for selling handmade crafts.",
-                    Technologies = new List<string> { "ASP.NET Core MVC", "C#", ".NET", "Stripe" },
+                    Technologies = ["ASP.NET Core MVC", "C#", ".NET", "Stripe"],
                     ImageUrl = "https://via.placeholder.com/300x200",
                     RepoUrl = "https://github.com/johndoe/project-three",
                     LiveUrl = "https://project-three.johndoe.com"
                 }
-            };
+            ];
         }
     }
 }
