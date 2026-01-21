@@ -71,9 +71,6 @@ Thumbs.db
 .DS_Store
 
 # Blazor specific
-wwwroot/lib/
-wwwroot/css/app.css
-wwwroot/css/bootstrap/
 **/*.blat
 **/*.scss
 **/*.sass
