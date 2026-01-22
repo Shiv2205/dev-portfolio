@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
-using System.Text.Json;
 using MudBlazor.Services;
 using dev_portfolio.Components;
-using dev_portfolio.Components.Models;
 using dev_portfolio.Components.Data;
 using Utilities;
 
