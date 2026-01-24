@@ -9,7 +9,7 @@ const string SEED_DIR = "seed";
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connection = new SqliteConnection("DataSource=portfolio.db");
+var connection = new SqliteConnection(builder.Configuration["Database:Source"]);
 connection.Open();
 
 // Add services to the container.
