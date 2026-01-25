@@ -9,8 +9,10 @@ public class EmailService(IOptions<SmtpSettings> options) : IEmailService
 {
     private readonly SmtpSettings _settings = options.Value;
 
-    public bool SendEmail(EmailData emailData)
+    public async Task<bool> SendEmail(EmailData emailData)
     {
+        var mailClient = new SmtpClient();
+
         try
         {
             var sender = new MailboxAddress(_settings.UserName, "hello@demomailtrap.co");
@@ -27,19 +29,23 @@ public class EmailService(IOptions<SmtpSettings> options) : IEmailService
             emailMessage.From.Add(sender);
             emailMessage.To.Add(recipient);
 
-            var mailClient = new SmtpClient();
-            mailClient.Connect(_settings.Host, _settings.Port, _settings.UseSSL);
-            mailClient.Authenticate(_settings.UserName, _settings.Password);
-            mailClient.Send(emailMessage);
-            mailClient.Disconnect(true);
-            mailClient.Dispose();
-
+            await mailClient.ConnectAsync(_settings.Host, _settings.Port, _settings.UseSSL);
+            await mailClient.AuthenticateAsync(_settings.UserName, _settings.Password);
+            await mailClient.SendAsync(emailMessage);
+            
             return true;
         }
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
             return false;
+        }
+        finally
+        {
+            if (mailClient.IsConnected)
+                await mailClient.DisconnectAsync(true);
+
+            mailClient.Dispose();
         }
     }
 }
