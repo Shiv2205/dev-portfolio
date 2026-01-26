@@ -15,7 +15,7 @@ public class EmailService(IOptions<SmtpSettings> options) : IEmailService
 
         try
         {
-            var sender = new MailboxAddress(_settings.UserName, "hello@demomailtrap.co");
+            var sender = new MailboxAddress(_settings.UserName, _settings.EmailId);
             var recipient = new MailboxAddress(emailData.RecipientName, emailData.RecipientId);
             var emailBody = new BodyBuilder
             {
