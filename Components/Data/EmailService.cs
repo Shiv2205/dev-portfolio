@@ -11,7 +11,7 @@ public class EmailService(IOptions<SmtpSettings> options) : IEmailService
 
     public async Task<bool> SendEmail(EmailData emailData)
     {
-        var mailClient = new SmtpClient();
+        using var mailClient = new SmtpClient();
 
         try
         {
@@ -44,8 +44,6 @@ public class EmailService(IOptions<SmtpSettings> options) : IEmailService
         {
             if (mailClient.IsConnected)
                 await mailClient.DisconnectAsync(true);
-
-            mailClient.Dispose();
         }
     }
 }
