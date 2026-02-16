@@ -18,11 +18,11 @@ public class ContactMessage
     {
         return 
         @$"
-            From: {this.Name}
-            Email: {this.Email}
+            From: {Name}
+            Email: {Email}
 
 
-            {this.Message}
+            {Message}
         ";
     }
 }
